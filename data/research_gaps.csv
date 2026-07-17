@@ -1,0 +1,2 @@
+id,subject_type,subject_id,issue_type,status,confidence,explanation
+research-gap-aldi-nord-parent-structure,ownership_group,ownership-group-aldi-nord,unresolved_parent_structure,unresolved,0.40,Exact legal parent and foundation/controller structure could not be independently verified.

@@ -1,0 +1,15 @@
+relationship_id,source_id
+relationship-josephs-middle-east-bakery,source-josephs-privacy
+relationship-josephs-middle-east-bakery,source-josephs-story
+relationship-trader-joes-company,source-trader-joes-terms
+relationship-trader-joes-company,source-trader-joes-court-order
+relationship-trader-joes-aldi-nord,source-usda-aldi-report
+relationship-trader-joes-aldi-nord,source-ap-trader-joes-aldi-nord
+relationship-trader-joes-aldi-nord,source-forbes-trader-joes-2025
+relationship-wholesome-pantry-wakefern,source-wakefern-brands
+relationship-wholesome-pantry-wakefern,source-wakefern-2025-shareholders
+relationship-tuttorosso-red-gold,source-red-gold-story
+relationship-tuttorosso-red-gold,source-red-gold-2025-catalog
+relationship-envirokidz-natures-path,source-envirokidz-products
+relationship-envirokidz-natures-path,source-natures-path-privacy
+relationship-envirokidz-natures-path,source-natures-path-family

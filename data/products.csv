@@ -1,0 +1,6 @@
+id,gtin,name,brand_id,category,package_company_text,image_url,created_at,updated_at
+product-josephs-lavash-bread,074117000734,Joseph's Lavash Bread,brand-josephs-bakery,Flatbread,,,2026-07-17,2026-07-17
+product-trader-joes-organic-vegetarian-chili,00712996,Trader Joe's Organic Vegetarian Chili,brand-trader-joes,Canned Goods,"Distributed and sold exclusively by Trader Joe's, Monrovia, CA 91016",,2026-07-17,2026-07-17
+product-wholesome-pantry-light-red-kidney-beans,041190055661,Light Red Kidney Beans,brand-wholesome-pantry-organic,Canned Goods,"Distributed by Wakefern Food Corp., 5000 Riverside Drive, Keasbey, NJ 08832",,2026-07-17,2026-07-17
+product-tuttorosso-tomato-paste,072940757092,Tomato Paste,brand-tuttorosso,Canned Goods,"Distributed by Red Gold, LLC",,2026-07-17,2026-07-17
+product-envirokidz-choco-chimps,058449870241,Organic Chocolate Choco Chimps,brand-envirokidz,Cereal,"Distributed by Nature's Path Foods Inc.",,2026-07-17,2026-07-17

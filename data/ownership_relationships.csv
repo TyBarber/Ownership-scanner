@@ -1,0 +1,7 @@
+id,child_type,child_id,parent_type,parent_id,relationship_type,effective_from,effective_from_precision,effective_until,verification_status,confidence,last_verified_at
+relationship-josephs-middle-east-bakery,brand,brand-josephs-bakery,company,company-middle-east-bakery-inc,owned_by,,,,verified,0.95,2026-07-17
+relationship-trader-joes-company,brand,brand-trader-joes,company,company-trader-joes-company,owned_by,,,,verified,0.95,2026-07-17
+relationship-trader-joes-aldi-nord,company,company-trader-joes-company,ownership_group,ownership-group-aldi-nord,controlled_by_group,1979,year,,verified,0.85,2026-07-17
+relationship-wholesome-pantry-wakefern,brand,brand-wholesome-pantry-organic,company,company-wakefern-food-corp,owned_by,,,,verified,0.95,2026-07-17
+relationship-tuttorosso-red-gold,brand,brand-tuttorosso,company,company-red-gold-llc,owned_by,2001,year,,verified,0.95,2026-07-17
+relationship-envirokidz-natures-path,brand,brand-envirokidz,company,company-natures-path-foods-inc,owned_by,,,,verified,0.93,2026-07-17
