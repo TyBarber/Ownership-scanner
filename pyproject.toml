@@ -9,10 +9,13 @@ description = "Read-only product ownership feasibility API"
 requires-python = ">=3.9"
 dependencies = [
   "fastapi==0.115.14",
-  "uvicorn==0.37.0",
+  "mangum==0.21.0",
 ]
 
 [project.optional-dependencies]
+dev = [
+  "uvicorn==0.37.0",
+]
 test = [
   "httpx==0.28.1",
   "pytest==8.4.2",

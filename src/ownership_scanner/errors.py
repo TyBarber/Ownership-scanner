@@ -15,3 +15,7 @@ class ProductNotFoundError(OwnershipScannerError):
 
 class DataIntegrityError(OwnershipScannerError):
     """Canonical data is missing a required reference or source."""
+
+
+class DataConfigurationError(DataIntegrityError):
+    """The canonical dataset cannot be located or is incomplete."""

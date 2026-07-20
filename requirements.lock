@@ -1,4 +1,4 @@
-# Exact Python 3.9 development/test environment generated from the pinned project dependencies.
+# Exact Python 3.9 local development/test environment generated from the pinned project dependencies.
 annotated-types==0.7.0
 anyio==4.12.1
 certifi==2026.6.17
@@ -10,6 +10,7 @@ httpcore==1.0.9
 httpx==0.28.1
 idna==3.18
 iniconfig==2.1.0
+mangum==0.21.0
 packaging==26.2
 pluggy==1.6.0
 pydantic==2.13.4
