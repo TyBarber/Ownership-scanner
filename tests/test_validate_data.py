@@ -35,15 +35,18 @@ class ValidatorTests(unittest.TestCase):
     def test_canonical_data_passes_development_profile(self):
         self.assertEqual([], validator.validate(self.data, "development"))
 
-    def test_full_profile_retains_ten_product_gate(self):
-        errors = validator.validate(self.data, "full")
-        self.assertEqual(1, len(errors))
-        self.assertIn("at least 10 real products required; found 5", errors[0])
+    def test_canonical_data_passes_full_profile(self):
+        self.assertEqual([], validator.validate(self.data, "full"))
 
     def test_all_canonical_gtins_are_valid_and_preserve_zeroes(self):
         products = self.rows("products.csv")
-        self.assertTrue(all(row["gtin"].startswith("0") for row in products))
         self.assertTrue(all(validator.valid_gtin(row["gtin"]) for row in products))
+        by_id = {row["id"]: row["gtin"] for row in products}
+        self.assertEqual("00016000124790", by_id["product-cheerios"])
+        self.assertEqual("00810063710323", by_id["product-poppi"])
+        self.assertEqual("085239276495", by_id["product-good-and-gather-creamy-peanut-butter"])
+        self.assertEqual("071012010509", by_id["product-king-arthur-flour"])
+        self.assertEqual("015000047313", by_id["product-gerber-mixed-berries-yogurt-melts"])
 
     def test_missing_source_is_reported(self):
         links = [row for row in self.rows("relationship_sources.csv") if row["relationship_id"] != "relationship-josephs-middle-east-bakery"]

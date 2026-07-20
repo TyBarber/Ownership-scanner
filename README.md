@@ -9,7 +9,7 @@ This repository currently contains:
 - Automated validator tests
 - MVP, data-model, and manual-research documentation
 
-It intentionally contains placeholder data only. The feasibility gate must remain closed until at least 10 real, manually researched products and their sourced ownership chains have been entered.
+The feasibility dataset now contains 13 real, manually researched products with sourced ownership chains.
 
 ## Run locally
 
@@ -21,7 +21,7 @@ python3 scripts/validate_data.py --profile full
 python3 -m unittest discover -s tests -v
 ```
 
-The development profile passes with the five researched products. The full feasibility profile intentionally continues to fail until 10 real products have been researched. The tests are expected to pass.
+Both the development and full feasibility profiles pass with the researched product set. The tests are expected to pass.
 
 ## Current boundary
 

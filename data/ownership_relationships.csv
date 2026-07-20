@@ -5,3 +5,13 @@ relationship-trader-joes-aldi-nord,company,company-trader-joes-company,ownership
 relationship-wholesome-pantry-wakefern,brand,brand-wholesome-pantry-organic,company,company-wakefern-food-corp,owned_by,,,,verified,0.95,2026-07-17
 relationship-tuttorosso-red-gold,brand,brand-tuttorosso,company,company-red-gold-llc,owned_by,2001,year,,verified,0.95,2026-07-17
 relationship-envirokidz-natures-path,brand,brand-envirokidz,company,company-natures-path-foods-inc,owned_by,,,,verified,0.93,2026-07-17
+relationship-fage-fage-usa,brand,brand-fage,company,company-fage-usa-dairy-industry-inc,owned_by,,,,verified,0.95,2026-07-20
+relationship-fage-usa-fage-international,company,company-fage-usa-dairy-industry-inc,company,company-fage-international-sa,owned_by,,,,verified,0.95,2026-07-20
+relationship-spindrift-beverage,brand,brand-spindrift,company,company-spindrift-beverage-co-inc,owned_by,,,,verified,0.95,2026-07-20
+relationship-campbells-company,brand,brand-campbells,company,company-the-campbells-company,owned_by,,,,verified,0.98,2026-07-20
+relationship-cheerios-general-mills,brand,brand-cheerios,company,company-general-mills-inc,owned_by,,,,verified,0.98,2026-07-20
+relationship-poppi-pepsico,brand,brand-poppi,company,company-pepsico-inc,owned_by,2025-05-19,day,,verified,0.99,2026-07-20
+relationship-good-and-gather-target,brand,brand-good-and-gather,company,company-target-corporation,owned_by,2019-08-19,day,,verified,0.99,2026-07-20
+relationship-king-arthur-company,brand,brand-king-arthur,company,company-king-arthur-baking-company-inc,owned_by,,,,verified,0.97,2026-07-20
+relationship-gerber-products-company,brand,brand-gerber,company,company-gerber-products-company,owned_by,,,,verified,0.98,2026-07-20
+relationship-gerber-products-nestle,company,company-gerber-products-company,company,company-nestle-sa,owned_by,2007-09-01,day,,verified,0.99,2026-07-20
