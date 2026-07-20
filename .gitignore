@@ -6,3 +6,16 @@ __pycache__/
 venv/
 .DS_Store
 dist/
+
+# Terraform local/runtime files. Lock files and example variable files remain tracked.
+**/.terraform/
+*.tfstate
+*.tfstate.*
+crash.log
+crash.*.log
+*.tfplan
+*.plan
+**/backend.hcl
+**/backend.tfbackend
+**/terraform.tfvars
+**/*.auto.tfvars
