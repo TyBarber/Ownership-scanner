@@ -6,6 +6,7 @@ from typing import Optional
 from fastapi import FastAPI, HTTPException, Query, Request
 from fastapi.responses import JSONResponse
 
+from .api_models import HealthResponse, ProductListResponse, ProductOwnershipResponse
 from .config import Settings
 from .errors import DataIntegrityError, InvalidGtinError, ProductNotFoundError
 from .ownership_service import OwnershipService
@@ -31,11 +32,11 @@ def create_app(repository: Optional[CsvRepository] = None) -> FastAPI:
         )
         return JSONResponse(status_code=500, content={"detail": PUBLIC_INTERNAL_ERROR})
 
-    @application.get("/health")
-    def health():
+    @application.get("/health", response_model=HealthResponse)
+    def health() -> HealthResponse:
         return {"status": "healthy"}
 
-    @application.get("/products")
+    @application.get("/products", response_model=ProductListResponse)
     def products(
         brand: Optional[str] = None,
         category: Optional[str] = None,
@@ -44,7 +45,7 @@ def create_app(repository: Optional[CsvRepository] = None) -> FastAPI:
     ):
         return service.list_products(brand=brand, category=category, limit=limit, offset=offset)
 
-    @application.get("/products/{gtin}")
+    @application.get("/products/{gtin}", response_model=ProductOwnershipResponse)
     def product(gtin: str, request: Request):
         try:
             return service.get_product_ownership(gtin)
