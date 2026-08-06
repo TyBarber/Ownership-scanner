@@ -89,9 +89,9 @@ virtual environments, caches, local-only dependencies, likely secrets, intake
 photos, and absolute Mac paths, validates Linux x86_64 binary extensions, imports
 the packaged handler code, and reports compressed and uncompressed sizes.
 
-AWS infrastructure has not been provisioned. There are no IAM roles, API
-Gateway resources, deployment commands, Terraform files, alarms, or budgets in
-this repository yet.
+Terraform configurations exist under `infra/`, and the Lambda artifact can be
+built locally. AWS infrastructure has not yet been provisioned. Deployment
+instructions are documented in [infra/README.md](infra/README.md).
 
 ## Current boundary
 
