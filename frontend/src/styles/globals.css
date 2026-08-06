@@ -1,0 +1,99 @@
+@import url("https://fonts.googleapis.com/css2?family=Archivo+Black&family=Inter:wght@400;500;650;750;850&display=swap");
+
+:root {
+  color: #171713;
+  background: #f5f0e6;
+  font-family: "Inter", Arial, sans-serif;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+
+  --font-display: "Archivo Black", Impact, sans-serif;
+  --color-paper: #f5f0e6;
+  --color-paper-deep: #ebe3d4;
+  --color-surface: #fffdf7;
+  --color-ink: #171713;
+  --color-muted: #5e5b52;
+  --color-line: #d8d0c1;
+  --color-line-strong: #827d72;
+  --color-accent: #c54427;
+  --color-accent-dark: #8f2917;
+  --color-highlight: #f6d54a;
+  --color-verified: #176b57;
+  --color-gap: #9b5a05;
+  --color-gap-soft: #fff0cc;
+  --color-danger: #9f2418;
+  --color-focus: #176bca;
+  --content: 72rem;
+  --content-wide: 82rem;
+  --radius: 0.9rem;
+  --radius-small: 0.5rem;
+  --shadow-small: 0 0.25rem 1rem rgb(34 29 20 / 7%);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  min-width: 20rem;
+  scroll-behavior: smooth;
+}
+
+body {
+  min-width: 20rem;
+  min-height: 100vh;
+  margin: 0;
+  overflow-x: hidden;
+  background:
+    linear-gradient(rgb(23 23 19 / 3%) 1px, transparent 1px) 0 0 / 100%
+      4rem,
+    var(--color-paper);
+}
+
+button,
+input {
+  font: inherit;
+}
+
+a,
+button,
+input,
+summary {
+  outline-offset: 3px;
+}
+
+:focus-visible {
+  outline: 3px solid var(--color-focus);
+}
+
+::selection {
+  background: var(--color-highlight);
+  color: var(--color-ink);
+}
+
+.srOnly {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}

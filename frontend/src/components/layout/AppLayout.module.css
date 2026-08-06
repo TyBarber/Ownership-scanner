@@ -1,0 +1,135 @@
+.skipLink {
+  position: fixed;
+  z-index: 100;
+  top: 0.75rem;
+  left: 0.75rem;
+  transform: translateY(-180%);
+  padding: 0.75rem 1rem;
+  background: var(--color-ink);
+  color: white;
+}
+
+.skipLink:focus {
+  transform: translateY(0);
+}
+
+.header {
+  border-bottom: 1px solid var(--color-line);
+  background: color-mix(in srgb, var(--color-paper) 92%, transparent);
+  backdrop-filter: blur(10px);
+}
+
+.headerInner {
+  width: min(100% - 2rem, var(--content-wide));
+  margin-inline: auto;
+  padding-block: 1rem;
+}
+
+.brand {
+  display: inline-flex;
+  min-height: 2.75rem;
+  flex-direction: column;
+  justify-content: center;
+  color: var(--color-ink);
+  text-decoration: none;
+}
+
+.brand span {
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  font-weight: 900;
+  letter-spacing: -0.04em;
+  line-height: 0.9;
+}
+
+.brand small {
+  margin-top: 0.25rem;
+  color: var(--color-muted);
+  font-size: 0.64rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.navigation {
+  display: flex;
+  margin: 0.85rem 0 0;
+  padding: 0;
+  gap: 0.2rem;
+  overflow-x: auto;
+  list-style: none;
+}
+
+.navigation a {
+  display: inline-flex;
+  min-height: 2.75rem;
+  align-items: center;
+  padding-inline: 0.8rem;
+  border-radius: 999px;
+  color: var(--color-muted);
+  font-size: 0.9rem;
+  font-weight: 750;
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.navigation a:hover,
+.navigation .active {
+  background: var(--color-ink);
+  color: var(--color-paper);
+}
+
+.main {
+  min-height: 70vh;
+}
+
+.footer {
+  display: grid;
+  width: min(100% - 2rem, var(--content-wide));
+  margin: 4rem auto 0;
+  padding-block: 2rem;
+  gap: 1rem;
+  border-top: 1px solid var(--color-line);
+  color: var(--color-muted);
+  font-size: 0.9rem;
+}
+
+.footer div {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+}
+
+.footer strong {
+  color: var(--color-ink);
+  font-family: var(--font-display);
+  font-size: 1.2rem;
+  letter-spacing: -0.03em;
+}
+
+.footer p {
+  max-width: 32rem;
+  margin: 0;
+}
+
+@media (min-width: 48rem) {
+  .headerInner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .navigation {
+    margin: 0;
+  }
+
+  .footer {
+    grid-template-columns: 1fr 1fr;
+    align-items: end;
+  }
+
+  .footer p {
+    justify-self: end;
+    text-align: right;
+  }
+}

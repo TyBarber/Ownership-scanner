@@ -17,6 +17,7 @@ This repository currently contains:
 - Automated validator tests
 - A framework-independent ownership traversal service
 - A local FastAPI HTTP interface
+- A local React, TypeScript, and Vite frontend in `frontend/`
 - MVP, data-model, and manual-research documentation
 
 The feasibility dataset now contains 13 real, manually researched products with sourced ownership chains.
@@ -120,3 +121,13 @@ instructions.
 - Ownership results may include explicitly identified research gaps.
 
 See [docs/manual-research-guide.md](docs/manual-research-guide.md) for the exact research workflow.
+
+## Local frontend
+
+The first local Protest frontend milestone includes product and brand search,
+manual GTIN lookup, sourced ownership-chain results, research-gap presentation,
+methodology, and about pages. Camera scanning and production frontend deployment
+are not implemented yet.
+
+See [frontend/README.md](frontend/README.md) for setup, local/deployed API proxy
+configuration, and frontend quality checks.

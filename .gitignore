@@ -6,6 +6,11 @@ __pycache__/
 venv/
 .DS_Store
 dist/
+frontend/node_modules/
+frontend/dist/
+frontend/.env
+frontend/.env.local
+frontend/.env.*.local
 
 # Terraform local/runtime files. Lock files and example variable files remain tracked.
 **/.terraform/
