@@ -1,20 +1,25 @@
 # Ownership Scanner development infrastructure
 
-This directory defines, but does not deploy, the Ownership Scanner development
-environment:
+This directory defines the Ownership Scanner development environment, deployed
+on August 6, 2026:
 
 ```text
 API Gateway HTTP API
   -> Lambda (Python 3.12, x86_64)
-  -> packaged canonical CSV dataset
+  -> FastAPI through Mangum
+  -> packaged, verified canonical CSV dataset
   -> CloudWatch Logs and alarms
 ```
 
-No AWS infrastructure has been provisioned. `terraform apply` and
-`terraform destroy` are not authorized until a plan has been reviewed and
-deployment is approved separately.
+The public development endpoint is
+<https://83fwv16l3j.execute-api.us-east-1.amazonaws.com>. Interactive API
+documentation is available at
+<https://83fwv16l3j.execute-api.us-east-1.amazonaws.com/docs>, and the OpenAPI
+schema is at
+<https://83fwv16l3j.execute-api.us-east-1.amazonaws.com/openapi.json>.
+This remains a development deployment, not a production service.
 
-## Expected resources
+## Deployed resources
 
 The bootstrap root defines:
 
@@ -30,7 +35,12 @@ The development root defines:
 - one Lambda invocation permission restricted to that API
 - two 14-day CloudWatch log groups
 - four CloudWatch metric alarms
-- optionally, one monthly AWS cost budget with two email notifications
+- one $5 monthly AWS cost budget with two email notifications
+
+Terraform also manages remote development state. API throttling is five requests
+per second with a burst of ten, both log groups retain data for 14 days, and the
+complete application test suite has 45 passing tests. The packaged canonical
+dataset contains 13 products.
 
 There is no DynamoDB, WAF, VPC, custom domain, authentication, provisioned
 concurrency, Lambda Function URL, X-Ray, dashboard, database, or application-data
@@ -43,8 +53,8 @@ API Gateway requests, Lambda invocations and duration, CloudWatch log ingestion
 and storage, CloudWatch alarms, S3 state storage, and AWS Budgets may incur cost.
 At low development traffic the request, compute, log, and state-storage costs
 should be small, but they are not guaranteed to be zero. Four CloudWatch alarms
-are expected to be the most consistent recurring resource category. The optional
-budget monitors cost; it does not cap or stop spending.
+are expected to be the most consistent recurring resource category. The $5
+monthly budget monitors cost; it does not cap or stop spending.
 
 ## Prerequisites
 
@@ -92,8 +102,8 @@ Set `state_bucket_name` to a globally unique name before planning. Review every
 planned action, especially the account, Region, bucket name, encryption,
 versioning, public-access block, TLS policy, and `prevent_destroy` lifecycle.
 
-The following command is documented for a future approved bootstrap deployment;
-**do not run it without explicit authorization**:
+The bootstrap was deployed after review. For any future bootstrap change, apply
+only a newly reviewed saved plan with explicit authorization:
 
 ```bash
 terraform -chdir=infra/bootstrap apply bootstrap.tfplan
@@ -140,7 +150,8 @@ terraform -chdir=infra/environments/dev validate
 terraform -chdir=infra/environments/dev plan -out=dev.tfplan
 ```
 
-Budget creation defaults to disabled. If enabled, provide the notification email
+Budget creation defaults to disabled in the example configuration. The deployed
+development variables enable a $5 monthly budget. Provide the notification email
 only in the ignored real `terraform.tfvars` or through a `TF_VAR_` environment
 variable. The email variable is marked sensitive. AWS Budgets permissions may
 need to be granted separately to the identity running Terraform.
@@ -157,20 +168,36 @@ Before any deployment, manually review:
 - all alarms and optional budget recipients
 - every resource create, update, replace, and delete action
 
-The following command is documented for a future approved deployment;
-**it is not authorized now**:
+After explicit deployment approval, apply only the saved plan that was reviewed:
 
 ```bash
 terraform -chdir=infra/environments/dev apply dev.tfplan
 ```
 
+## Deploying application or dataset updates
+
+CSV changes are packaged into the Lambda ZIP, so rebuild and verify the artifact,
+run validation and tests, then create and review a fresh saved plan:
+
+```bash
+python scripts/validate_data.py --profile development
+python scripts/validate_data.py --profile full
+python -m pytest
+python scripts/build_lambda_artifact.py
+python scripts/verify_lambda_artifact.py
+terraform -chdir=infra/environments/dev validate
+terraform -chdir=infra/environments/dev plan -out=dev.tfplan
+terraform -chdir=infra/environments/dev show -no-color dev.tfplan
+```
+
+Do not apply an update until that exact saved plan has been reviewed and
+explicitly approved.
+
 ## Provider lock files
 
 Run `terraform init` with the reviewed Terraform CLI to generate
 `.terraform.lock.hcl` independently in each root. Lock files should be reviewed
-and committed later; they are intentionally not ignored. This code-generation
-phase does not create them because Terraform is not installed in the current
-development environment.
+and committed; they are intentionally not ignored.
 
 ## Rollback and destruction
 

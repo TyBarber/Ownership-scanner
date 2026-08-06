@@ -2,6 +2,14 @@
 
 Ownership Scanner is a feasibility-stage project for testing whether product-to-company ownership can be modeled and verified reliably. It includes a local, read-only API over the canonical CSV dataset.
 
+The development API was deployed on August 6, 2026:
+
+- API: <https://83fwv16l3j.execute-api.us-east-1.amazonaws.com>
+- Interactive documentation: <https://83fwv16l3j.execute-api.us-east-1.amazonaws.com/docs>
+- OpenAPI schema: <https://83fwv16l3j.execute-api.us-east-1.amazonaws.com/openapi.json>
+
+This is a development deployment, not a production service.
+
 This repository currently contains:
 
 - CSV templates for products, brands, companies, ownership relationships, and sources
@@ -34,6 +42,7 @@ python -m pytest
 ```
 
 Both the development and full feasibility profiles pass with the researched product set. The tests are expected to pass.
+The complete test suite currently contains 45 passing tests.
 
 ## Start the local API
 
@@ -49,10 +58,18 @@ Example product lookup (the quotes preserve the GTIN as text in the shell):
 curl "http://127.0.0.1:8000/products/00016000124790"
 ```
 
-## AWS Lambda compatibility
+## Development deployment
 
-The approved cloud target is AWS Lambda using Python 3.12 on Linux x86_64,
-behind an API Gateway HTTP API with payload format 2.0. The Lambda handler is:
+The deployed development architecture is:
+
+```mermaid
+flowchart LR
+    API["API Gateway HTTP API"] --> Lambda["Lambda: Python 3.12, x86_64"]
+    Lambda --> App["FastAPI via Mangum"]
+    App --> Data["Packaged, verified CSV dataset"]
+```
+
+The API uses payload format 2.0. The Lambda handler is:
 
 ```text
 ownership_scanner.lambda_handler.handler
@@ -89,12 +106,17 @@ virtual environments, caches, local-only dependencies, likely secrets, intake
 photos, and absolute Mac paths, validates Linux x86_64 binary extensions, imports
 the packaged handler code, and reports compressed and uncompressed sizes.
 
-Terraform configurations exist under `infra/`, and the Lambda artifact can be
-built locally. AWS infrastructure has not yet been provisioned. Deployment
-instructions are documented in [infra/README.md](infra/README.md).
+Terraform configurations under `infra/` manage the development API, Lambda,
+least-privilege IAM, 14-day logging, four alarms, a $5 monthly budget monitor,
+and remote state. API throttling is five requests per second with a burst of
+ten. See [infra/README.md](infra/README.md) for rebuild and deployment-update
+instructions.
 
-## Current boundary
+## Known limitations
 
-This stage does not include a frontend, database, authentication, AI integration, or provisioned AWS resources.
+- The product catalog is limited to 13 manually researched products.
+- There is no frontend or authentication.
+- CSV updates require rebuilding and redeploying the Lambda artifact.
+- Ownership results may include explicitly identified research gaps.
 
 See [docs/manual-research-guide.md](docs/manual-research-guide.md) for the exact research workflow.
